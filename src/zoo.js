@@ -10,49 +10,51 @@ function getSpeciesByIds(...ids) {
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
+  const animalSpecify = data.species.find((animals) => animals.name === animal);
+  return animalSpecify.residents.every((resident) => resident.age >= age);
 }
 
-function getEmployeeByName(employeeName) {
+function getEmployeeByName(_employeeName) {
   // seu código aqui
 }
 
-function createEmployee(personalInfo, associatedWith) {
+function createEmployee(_personalInfo, _associatedWith) {
   // seu código aqui
 }
 
-function isManager(id) {
+function isManager(_id) {
   // seu código aqui
 }
 
-function addEmployee(id, firstName, lastName, managers, responsibleFor) {
+function addEmployee(_id, _firstName, _lastName, _managers, _responsibleFor) {
   // seu código aqui
 }
 
-function countAnimals(species) {
+function countAnimals(_species) {
   // seu código aqui
 }
 
-function calculateEntry(entrants) {
+function calculateEntry(_entrants) {
   // seu código aqui
 }
 
-function getAnimalMap(options) {
+function getAnimalMap(_options) {
   // seu código aqui
 }
 
-function getSchedule(dayName) {
+function getSchedule(_dayName) {
   // seu código aqui
 }
 
-function getOldestFromFirstSpecies(id) {
+function getOldestFromFirstSpecies(_id) {
   // seu código aqui
 }
 
-function increasePrices(percentage) {
+function increasePrices(_percentage) {
   // seu código aqui
 }
 
-function getEmployeeCoverage(idOrName) {
+function getEmployeeCoverage(_idOrName) {
   // seu código aqui
 }
 
