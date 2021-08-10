@@ -1,3 +1,4 @@
+const { employees } = require('./data');
 const data = require('./data');
 
 function getSpeciesByIds(...ids) {
@@ -21,15 +22,16 @@ function getEmployeeByName(employeeName) {
   return data.employees
     .find((employe) => employe.firstName === employeeName || employe.lastName === employeeName);
 }
-console.log(getEmployeeByName());
-console.log(getEmployeeByName('Emery'));
-console.log(getEmployeeByName('Wishart'));
+
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
+  return { ...personalInfo, ...associatedWith }; // método ..spread utilizado para concatenar as informações recebidas
 }
 
-function isManager(_id) {
+function isManager(id) {
   // seu código aqui
+  return employees.some((Person) => Person.managers.includes(id));
+  // return employees.some((person, index) => person.managers[index] === id); // outra maneira de fazer
 }
 
 function addEmployee(_id, _firstName, _lastName, _managers, _responsibleFor) {
