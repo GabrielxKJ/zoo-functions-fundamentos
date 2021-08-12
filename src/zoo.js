@@ -1,4 +1,4 @@
-const { employees } = require('./data');
+const { species, employees } = require('./data');
 const data = require('./data');
 
 function getSpeciesByIds(...ids) {
@@ -25,7 +25,7 @@ function getEmployeeByName(employeeName) {
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
-  return { ...personalInfo, ...associatedWith }; // método ..spread utilizado para concatenar as informações recebidas
+  return { ...personalInfo, ...associatedWith };
 }
 
 function isManager(id) {
@@ -34,19 +34,36 @@ function isManager(id) {
   // return employees.some((person, index) => person.managers[index] === id); // outra maneira de fazer
 }
 
-function addEmployee(_id, _firstName, _lastName, _managers, _responsibleFor) {
+function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []) {
+  // seu código aqui
+  const newEmployee = {
+    id,
+    firstName,
+    lastName,
+    managers,
+    responsibleFor,
+  };
+  return employees.push(newEmployee);
+}
+
+function countAnimals(speciees) {
+  // seu código aqui
+  const allAnimals = {};
+  if (!speciees) {
+    species.forEach((animal) => {
+      allAnimals[animal.name] = animal.residents.length;
+    });
+    return allAnimals;
+  }
+  return species.find((number) => number.name === speciees).residents.length;
+}
+// Sem parâmetros, retorna animais e suas quantidades
+// Com o nome de uma espécie de animal, retorna somente a quantidade
+function calculateEntry(entrants) {
   // seu código aqui
 }
 
-function countAnimals(_species) {
-  // seu código aqui
-}
-
-function calculateEntry(_entrants) {
-  // seu código aqui
-}
-
-function getAnimalMap(_options) {
+function getAnimalMap(options) {
   // seu código aqui
 }
 
