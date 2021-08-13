@@ -1,4 +1,9 @@
-const { species, employees, prices } = require('./data');
+const {
+  species,
+  employees,
+  prices,
+  hours,
+} = require('./data');
 const data = require('./data');
 
 function getSpeciesByIds(...ids) {
@@ -25,7 +30,10 @@ function getEmployeeByName(employeeName) {
 
 function createEmployee(personalInfo, associatedWith) {
   // seu código aqui
-  return { ...personalInfo, ...associatedWith };
+  return {
+    ...personalInfo,
+    ...associatedWith,
+  };
 }
 
 function isManager(id) {
@@ -60,7 +68,9 @@ function countAnimals(speciees) {
 
 function calculateEntry(entrants = 0) {
   // seu código aqui
-  const { Adult = 0, Senior = 0, Child = 0 } = entrants;
+  const {
+    Adult = 0, Senior = 0, Child = 0,
+  } = entrants;
   return Adult * prices.Adult + Senior * prices.Senior + Child * prices.Child;
 }
 
@@ -68,9 +78,21 @@ function getAnimalMap(options) {
   // seu código aqui
 }
 
-function getSchedule(_dayName) {
+function getSchedule(dayName) {
   // seu código aqui
+  const allSchedule = {};
+  Object.entries(hours).forEach((day) => { // percorre o array de chave/valores;
+    if (day[0] === 'Monday') {
+      allSchedule[day[0]] = 'CLOSED';
+    } else {
+      allSchedule[day[0]] = `Open from ${day[1].open}am until ${day[1].close - 12}pm`;
+    }
+  });
+  if (!dayName) return allSchedule;
+  const especificDay = Object.entries(allSchedule).find((specific) => specific[0] === dayName); // retorna um array
+  return { [especificDay[0]]: especificDay[1] }; // desestrurura o valor do array dentro de um objeto.
 }
+console.log(getSchedule('Tuesday'));
 
 function getOldestFromFirstSpecies(_id) {
   // seu código aqui
