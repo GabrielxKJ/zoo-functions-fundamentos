@@ -82,7 +82,7 @@ function getSchedule(dayName) {
   // seu código aqui
   const allSchedule = {};
   Object.entries(hours).forEach((day) => { // percorre o array de chave/valores;
-    if (day[0] === 'Monday') {
+    if (day[1].open === 0 && day[1].close === 0) {
       allSchedule[day[0]] = 'CLOSED';
     } else {
       allSchedule[day[0]] = `Open from ${day[1].open}am until ${day[1].close - 12}pm`;
@@ -90,9 +90,8 @@ function getSchedule(dayName) {
   });
   if (!dayName) return allSchedule;
   const especificDay = Object.entries(allSchedule).find((specific) => specific[0] === dayName); // retorna um array
-  return { [especificDay[0]]: especificDay[1] }; // desestrurura o valor do array dentro de um objeto.
+  return { [especificDay[0]]: especificDay[1] }; // acessa os valores do array dentro de um objeto.
 }
-console.log(getSchedule('Tuesday'));
 
 function getOldestFromFirstSpecies(_id) {
   // seu código aqui
