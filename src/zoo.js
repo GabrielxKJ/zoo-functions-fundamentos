@@ -93,14 +93,21 @@ function getSchedule(dayName) {
   return { [especificDay[0]]: especificDay[1] }; // acessa os valores do array dentro de um objeto.
 }
 
-function getOldestFromFirstSpecies(_id) {
+function getOldestFromFirstSpecies(id) {
   // seu código aqui
+  const firstSpecie = employees.find((person) => person.id === id).responsibleFor[0];
+  const allResidents = species.find((animal) => animal.id === firstSpecie).residents;
+  const highAge = allResidents.sort((a, b) => b.age - a.age)[0];
+  return Object.values(highAge);
 }
+console.log(getOldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function increasePrices(_percentage) {
   // seu código aqui
 }
-
+// Se o parâmetro da função recebe o valor 20, o aumento é de 20%
+// Altera o objeto prices do arquivo data.js
+// Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
 function getEmployeeCoverage(_idOrName) {
   // seu código aqui
 }
