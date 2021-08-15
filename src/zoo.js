@@ -68,9 +68,7 @@ function countAnimals(speciees) {
 
 function calculateEntry(entrants = 0) {
   // seu código aqui
-  const {
-    Adult = 0, Senior = 0, Child = 0,
-  } = entrants;
+  const { Adult = 0, Senior = 0, Child = 0 } = entrants;
   return Adult * prices.Adult + Senior * prices.Senior + Child * prices.Child;
 }
 
@@ -97,14 +95,18 @@ function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const firstSpecie = employees.find((person) => person.id === id).responsibleFor[0];
   const allResidents = species.find((animal) => animal.id === firstSpecie).residents;
-  const highAge = allResidents.sort((a, b) => b.age - a.age)[0];
-  return Object.values(highAge);
+  const biggestAge = allResidents.sort((a, b) => b.age - a.age)[0];
+  return Object.values(biggestAge);
 }
-console.log(getOldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
-function increasePrices(_percentage) {
+function increasePrices(percentage) {
   // seu código aqui
+  Object.entries(prices).forEach((value) => {
+    prices[value[0]] = parseFloat(((percentage / 100) * value[1] + value[1] + 0.0001).toFixed(2));
+  });
+  return prices;
 }
+
 // Se o parâmetro da função recebe o valor 20, o aumento é de 20%
 // Altera o objeto prices do arquivo data.js
 // Ao passar uma porcentagem, incrementa todos os preços, arrendondados em duas casas decimais
